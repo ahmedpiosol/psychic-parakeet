@@ -21,7 +21,7 @@ namespace TestApp.Model
 
         public bool IsActive { get; set; }
 
-        //public virtual ICollection<Items.Item> Items { get; set; } = new List<Items.Item>();
+        public virtual ICollection<Items.Item> Items { get; set; } = new List<Items.Item>();
     }
 
     public enum UserGroup
