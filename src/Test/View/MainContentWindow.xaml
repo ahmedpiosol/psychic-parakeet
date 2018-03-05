@@ -1,0 +1,59 @@
+﻿<Controls:MetroWindow x:Name="MainContentsWindow" x:Class="TestApp.View.MainContentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:m="clr-namespace:TestApp.Model"
+        xmlns:vm="clr-namespace:TestApp.ViewModel"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestApp.View"
+        xmlns:c ="clr-namespace:TestApp.Converters"
+        xmlns:lang="clr-namespace:TestApp.Properties"
+        mc:Ignorable="d"
+        Title="hi" Height="600" Width="800" TitleCharacterCasing="Normal" BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}" WindowStartupLocation="CenterScreen" Closing="MainContentWindow_Closing" ContentRendered="MainContentsWindow_ContentRendered">
+    <Controls:MetroWindow.Resources>
+        <ResourceDictionary>
+            <c:DateTimeOffsetToDateTime x:Key="DataTimeOffsetToNormal"/>
+        </ResourceDictionary>
+    </Controls:MetroWindow.Resources>
+    <Grid>
+        <DataGrid x:Name="ItemsDataGrid" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Header="#" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding NameAr}" Header="Arabic Name"/>
+                <DataGridTextColumn Binding="{Binding NameEn}" Header="English Name"/>
+                <Controls:DataGridNumericUpDownColumn Binding="{Binding ManualId}" Header="Code" Minimum="0"/>
+                <DataGridTextColumn Binding="{Binding Barcode}" Header="BarCode"/>
+                <DataGridTextColumn Binding="{Binding Image}" Header="Image"/>
+                <DataGridComboBoxColumn SelectedValueBinding="{Binding Unit}" Header="Unit" SelectedValuePath="Id" DisplayMemberPath="Name"/>
+                <DataGridTextColumn Binding="{Binding MadeIn}" Header="Made In" FontSize="14"/>
+                <DataGridTemplateColumn Header="Created By">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding CreateBy}" SelectedValuePath="Id" DisplayMemberPath="Name"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding CreateBy}" SelectedValuePath="Id" DisplayMemberPath="Name"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Create in">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Controls:DateTimePicker SelectedDate="{Binding CreateDate, Converter={StaticResource DataTimeOffsetToNormal}}" Culture="(Default)" FirstDayOfWeek="Saturday"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Controls:DateTimePicker SelectedDate="{Binding CreateDate, Converter={StaticResource DataTimeOffsetToNormal}}" Culture="(Default)" FirstDayOfWeek="Saturday"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridComboBoxColumn SelectedValueBinding="{Binding EditBy}" Header="Edited by" SelectedValuePath="Id" DisplayMemberPath="Name"/>
+                <DataGridTextColumn Binding="{Binding EditDate}" Header="Edited in" FontSize="14"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Controls:MetroWindow>
