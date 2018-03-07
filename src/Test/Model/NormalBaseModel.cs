@@ -9,21 +9,23 @@ namespace TestApp.Model
     {
         public NormalBaseModel()
         {
-            Id = new Guid();
             CreateDate = DateTime.Now;
-            EditDate = null;
         }
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string Notes { get; set; }
 
-        public virtual User CreateBy { get; set; }
+        public Guid CreatedById { get; set; }
 
-        public DateTimeOffset? CreateDate { get; set; }
+        public DateTimeOffset CreateDate { get; set; }
 
-        public virtual User EditBy { get; set; }
+        public Guid? EditedById { get; set; }
 
         public DateTimeOffset? EditDate { get; set; }
+
+        public virtual User Creators { get; set; }
+
+        public virtual User Editors { get; set; }
     }
 }

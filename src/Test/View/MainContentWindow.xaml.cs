@@ -1,5 +1,6 @@
 ﻿using MahApps.Metro.Controls;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace TestApp.View
@@ -22,6 +23,8 @@ namespace TestApp.View
         private void MainContentsWindow_ContentRendered(object sender, EventArgs e)
         {
             DataContext db1 = new DataContext();
+            var AllUnit = new List<Model.Items.Unit>(db1.Units);
+            dsad.ItemsSource = AllUnit;
             var AllItems1 = new ObservableCollection<Model.Items.Item>(db1.Items);
             ItemsDataGrid.ItemsSource = AllItems1;
             /*

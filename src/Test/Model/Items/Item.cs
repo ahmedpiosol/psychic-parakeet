@@ -8,17 +8,16 @@
 
         public int? ManualId { get; set; }
 
-        public string Barcode { get; set; }
+        public byte[] Image { get; set; }
 
-        public byte?[] Image { get; set; }
-
-        public virtual Unit Unit { get; set; }
+        public int UnitId { get; set; }
 
         public string MadeIn { get; set; }
 
         public bool IsSerail { get; set; }
 
-        public bool IsExpire{ get; set; }
+        public bool IsExpire { get; set; }
 
+        public virtual Unit Units { get; set; }
     }
 }

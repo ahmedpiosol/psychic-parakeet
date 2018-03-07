@@ -25,7 +25,7 @@
                 <Controls:DataGridNumericUpDownColumn Binding="{Binding ManualId}" Header="Code" Minimum="0"/>
                 <DataGridTextColumn Binding="{Binding Barcode}" Header="BarCode"/>
                 <DataGridTextColumn Binding="{Binding Image}" Header="Image"/>
-                <DataGridComboBoxColumn SelectedValueBinding="{Binding Unit}" Header="Unit" SelectedValuePath="Id" DisplayMemberPath="Name"/>
+                <DataGridComboBoxColumn x:Name="dsad" SelectedValueBinding="{Binding UnitId}" Header="Unit" SelectedValuePath="Id" DisplayMemberPath="Name"/>
                 <DataGridTextColumn Binding="{Binding MadeIn}" Header="Made In" FontSize="14"/>
                 <DataGridTemplateColumn Header="Created By">
                     <DataGridTemplateColumn.CellTemplate>

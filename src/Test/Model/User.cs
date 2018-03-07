@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace TestApp.Model
 {
@@ -10,7 +9,7 @@ namespace TestApp.Model
             Id = Guid.NewGuid();
             IsActive = false;
         }
-        
+
         public Guid Id { get; set; }
 
         public string Name { get; set; }
@@ -20,8 +19,6 @@ namespace TestApp.Model
         public UserGroup Group { get; set; }
 
         public bool IsActive { get; set; }
-
-        public virtual ICollection<Items.Item> Items { get; set; } = new List<Items.Item>();
     }
 
     public enum UserGroup

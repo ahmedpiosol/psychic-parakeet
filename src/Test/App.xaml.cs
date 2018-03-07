@@ -1,7 +1,7 @@
 ﻿using MahApps.Metro;
-using TestApp.Kernel;
 using System;
 using System.Windows;
+using TestApp.Kernel;
 
 namespace TestApp
 {

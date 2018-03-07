@@ -1,9 +1,7 @@
 namespace TestApp
 {
-    using System;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity;
-    using System.Linq;
     using TestApp.Model;
     using TestApp.Model.Items;
 
@@ -22,6 +20,7 @@ namespace TestApp
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            /*--------------Users Table--------------*/
             modelBuilder.Entity<User>()
                 .Property(u => u.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
@@ -35,8 +34,7 @@ namespace TestApp
             modelBuilder.Entity<User>()
                 .Property(u => u.Password)
                 .IsRequired();
-            modelBuilder.Entity<Item>()
-                .HasKey(i => i.Id);
+            /*--------------Items Table--------------*/
             modelBuilder.Entity<Item>()
                 .Property(i => i.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
@@ -49,14 +47,48 @@ namespace TestApp
                 .IsRequired()
                 .HasMaxLength(50);
             modelBuilder.Entity<Item>()
-                .Property(m => m.CreateDate)
+                .Property(i => i.NameEn)
+                .IsOptional();
+            modelBuilder.Entity<Item>()
+                .Property(i => i.Image)
+                .HasColumnType("image")
                 .IsOptional();
             modelBuilder.Entity<Item>()
                 .Property(m => m.EditDate)
                 .IsOptional();
+            modelBuilder.Entity<Item>()
+                .HasRequired(u => u.Units)
+                .WithMany(i => i.Items)
+                .HasForeignKey(u => u.UnitId)
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Item>()
+                .HasRequired(u => u.Creators)
+                .WithMany()
+                .HasForeignKey(u => u.CreatedById)
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Item>()
+                .HasOptional(u => u.Editors)
+                .WithMany()
+                .HasForeignKey(u => u.EditedById)
+                .WillCascadeOnDelete(false);
+            /*--------------Units Table--------------*/
             modelBuilder.Entity<Unit>()
-                 .Property(i => i.Id)
-                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+                .Property(u => u.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            modelBuilder.Entity<Unit>()
+               .Property(u => u.Name)
+               .IsRequired()
+               .HasMaxLength(50);
+            modelBuilder.Entity<Unit>()
+                .HasRequired(u => u.Creators)
+                .WithMany()
+                .HasForeignKey(u => u.CreatedById)
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Unit>()
+                .HasOptional(u => u.Editors)
+                .WithMany()
+                .HasForeignKey(u => u.EditedById)
+                .WillCascadeOnDelete(false);
 
             /*------------------------------*/
             base.OnModelCreating(modelBuilder);

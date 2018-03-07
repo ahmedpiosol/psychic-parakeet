@@ -86,13 +86,9 @@
     <Compile Include="Converters\DateTimeOffsetToDateTime.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="Kernel\CommonBase.cs" />
-    <Compile Include="Migrations\201803050953423_First.cs" />
-    <Compile Include="Migrations\201803050953423_First.Designer.cs">
-      <DependentUpon>201803050953423_First.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803051138396_AddNavigation.cs" />
-    <Compile Include="Migrations\201803051138396_AddNavigation.Designer.cs">
-      <DependentUpon>201803051138396_AddNavigation.cs</DependentUpon>
+    <Compile Include="Migrations\201803070746537_First.cs" />
+    <Compile Include="Migrations\201803070746537_First.Designer.cs">
+      <DependentUpon>201803070746537_First.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Items\Item.cs" />
@@ -137,11 +133,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201803050953423_First.resx">
-      <DependentUpon>201803050953423_First.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803051138396_AddNavigation.resx">
-      <DependentUpon>201803051138396_AddNavigation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803070746537_First.resx">
+      <DependentUpon>201803070746537_First.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

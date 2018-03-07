@@ -1,11 +1,5 @@
-﻿using TestApp.View;
-using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data.Entity;
-using System.Net;
-using System.Reflection;
-using System.Security;
-using System.Threading;
 
 namespace TestApp.Kernel
 {
